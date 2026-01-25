@@ -30,7 +30,9 @@ export default function() {
           }
         },
         renderer(token) {
-          return `<p align="${token.alignment}">${this.parser.parseInline(token.tokens)}</p>`;
+          const lineNumber = token?.position ? ` data-lineNumber="${token.position.start.line}"` : '';
+
+          return `<p align="${token.alignment}"${lineNumber}>${this.parser.parseInline(token.tokens)}</p>`;
         }
       }
     ]

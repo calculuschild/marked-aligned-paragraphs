@@ -29,4 +29,19 @@ describe('Aligned Text', () => {
     marked.use(alignedParagraphs());
     expect(marked(trimLines('```\n\n:- Hello\n\n```\n'))).toMatchSnapshot();
   });
+
+  test('Center Alignment does not trigger mid-line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`Start of line :-: Hello`))).toMatchSnapshot();
+  });
+
+  test('Left Alignment does not trigger mid-line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`Start of line :- Hello`))).toMatchSnapshot();
+  });
+
+  test('Right Alignment does not trigger mid-line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`Start of line -: Hello`))).toMatchSnapshot();
+  });
 });

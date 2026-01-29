@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Aligned Text Center Aligned 1`] = `"<p align="Center">Hello</p>"`;
 

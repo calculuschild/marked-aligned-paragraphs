@@ -25,6 +25,14 @@ exports[`Aligned Text Does not override simple 1-column 1-row tables 1`] = `
 "
 `;
 
+exports[`Aligned Text Ends after a blank line 1`] = `
+"<p align="Center">Line 1
+Line 2
+Line3
+</p><p>Not centered</p>
+"
+`;
+
 exports[`Aligned Text Ignored inside a code block 1`] = `
 "<pre><code>
 :- Hello
@@ -33,7 +41,7 @@ exports[`Aligned Text Ignored inside a code block 1`] = `
 `;
 
 exports[`Aligned Text Is not valid if missing at least one space or newline after the marker 1`] = `
-"<p>:-:Cell</p>
+"<p>:-:Hello</p>
 "
 `;
 

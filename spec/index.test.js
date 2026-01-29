@@ -82,6 +82,11 @@ describe('Aligned Text', () => {
 
 	test('Is not valid if missing at least one space or newline after the marker', () => {
     marked.use(alignedParagraphs());
-    expect(marked(trimLines(`:-:Cell`))).toMatchSnapshot();
+    expect(marked(trimLines(`:-:Hello`))).toMatchSnapshot();
+  });
+
+	test('Ends after a blank line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:-: Line 1\nLine 2\nLine3\n\nNot centered`))).toMatchSnapshot();
   });
 });

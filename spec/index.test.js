@@ -44,4 +44,44 @@ describe('Aligned Text', () => {
     marked.use(alignedParagraphs());
     expect(marked(trimLines(`Start of line -: Hello`))).toMatchSnapshot();
   });
+
+	test('Center Alignment supports multiple hyphens', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:-------: Hello`))).toMatchSnapshot();
+  });
+
+	test('Left Alignment supports multiple hyphens', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:------- Hello`))).toMatchSnapshot();
+  });
+
+	test('Right Alignment supports multiple hyphens', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`-------: Hello`))).toMatchSnapshot();
+  });
+
+	test('Center Alignment can be used in the preceding line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:-------:\nHello`))).toMatchSnapshot();
+  });
+
+	test('Left Alignment can be used in the preceding line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:-------\nHello`))).toMatchSnapshot();
+  });
+
+	test('Right Alignment can be used in the preceding line', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`-------:\nHello`))).toMatchSnapshot();
+  });
+
+	test('Does not override simple 1-column 1-row tables', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`Header\n:-------:\nCell`))).toMatchSnapshot();
+  });
+
+	test('Is not valid if missing at least one space or newline after the marker', () => {
+    marked.use(alignedParagraphs());
+    expect(marked(trimLines(`:-:Cell`))).toMatchSnapshot();
+  });
 });
